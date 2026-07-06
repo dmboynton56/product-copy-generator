@@ -18,6 +18,8 @@ from typing import Any
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
+from api_errors import format_api_error
+
 
 ROOT_DIR = Path(__file__).resolve().parent
 DATA_PATH = ROOT_DIR / "data" / "products.csv"
@@ -181,7 +183,7 @@ def generate_for_product(
             "id": product_id,
             "source_product": product,
             "generated_copy": empty_copy(),
-            "generation_error": str(exc),
+            "generation_error": format_api_error(exc),
             "raw_response": raw_text or None,
         }
 

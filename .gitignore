@@ -4,4 +4,9 @@ __pycache__/
 *.pyc
 .DS_Store
 output/
+node_modules/
+.next/
+dist/
+coverage/
+.pytest_cache/
 

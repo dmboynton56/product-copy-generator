@@ -55,6 +55,11 @@ def parse_banned_cliches(cli_value: str | None) -> list[str]:
     return [item.strip() for item in raw_value.split(",") if item.strip()]
 
 
+def count_words(text: str) -> int:
+    """Count words in a text block using simple whitespace splitting."""
+    return len([word for word in text.split() if word.strip()])
+
+
 def find_banned_terms(text: str, banned_terms: list[str]) -> list[str]:
     """Find banned terms as whole words or exact hyphenated phrases."""
     matches: list[str] = []
@@ -83,6 +88,14 @@ def validate_item(item: dict[str, Any], banned_cliches: list[str]) -> list[str]:
     seo_title = str(generated_copy.get("seo_title", ""))
     seo_meta_description = str(generated_copy.get("seo_meta_description", ""))
     description = str(generated_copy.get("description", ""))
+    image_alt_text = str(generated_copy.get("image_alt_text", ""))
+
+    if description:
+        word_count = count_words(description)
+        if word_count < 45 or word_count > 80:
+            issues.append(
+                f"Description is {word_count} words; expected 45-80 words."
+            )
 
     if len(seo_title) > 60:
         issues.append(f"SEO title is {len(seo_title)} characters; limit is 60.")
@@ -90,6 +103,11 @@ def validate_item(item: dict[str, Any], banned_cliches: list[str]) -> list[str]:
     if len(seo_meta_description) > 155:
         issues.append(
             f"SEO meta description is {len(seo_meta_description)} characters; limit is 155."
+        )
+
+    if image_alt_text and len(image_alt_text) > 125:
+        issues.append(
+            f"Image alt text is {len(image_alt_text)} characters; limit is 125."
         )
 
     banned_matches = find_banned_terms(description, banned_cliches)

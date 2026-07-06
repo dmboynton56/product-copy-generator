@@ -18,6 +18,8 @@ from typing import Any
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
+from api_errors import format_api_error
+
 
 ROOT_DIR = Path(__file__).resolve().parent
 GENERATED_COPY_PATH = ROOT_DIR / "output" / "generated_copy.json"
@@ -170,7 +172,7 @@ def run_ai_review(
         parsed = {
             "summary": "Reviewer response could not be parsed as JSON.",
             "flagged_items": [],
-            "parse_error": str(exc),
+            "parse_error": format_api_error(exc),
             "raw_response": raw_text,
         }
 

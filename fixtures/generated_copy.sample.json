@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-07-05T12:00:00+00:00",
+  "model": "claude-sonnet-4-6",
+  "source_csv": "fixtures/sample-products.csv",
+  "brand_voice": "prompts/brand_voice.md",
+  "items": [
+    {
+      "id": 1,
+      "source_product": {
+        "name": "Nappa Leather Wrap Skirt",
+        "materials": "lamb nappa leather; viscose lining",
+        "color": "black",
+        "price": "690.00",
+        "care_instructions": "Specialist leather clean only; store away from direct sunlight"
+      },
+      "generated_copy": {
+        "description": "A wrap skirt cut from supple lamb nappa with a clean front overlap and a viscose lining for smooth wear. The black finish reads sharp against lighter knits and structured jackets. Designed to sit at the natural waist with a fluid drape through the hem.",
+        "seo_title": "Nappa Leather Wrap Skirt in Black",
+        "seo_meta_description": "Black nappa leather wrap skirt with viscose lining. Clean overlap front and fluid drape for polished day-to-evening styling.",
+        "image_alt_text": "Black nappa leather wrap skirt with front overlap and fluid hem"
+      },
+      "generation_error": null,
+      "raw_response": null
+    },
+    {
+      "id": 2,
+      "source_product": {
+        "name": "Structured Wool Blazer",
+        "materials": "Italian wool twill; cupro lining",
+        "color": "charcoal",
+        "price": "520.00",
+        "care_instructions": "Dry clean only; hang on a shaped hanger"
+      },
+      "generated_copy": {
+        "description": "Tailored in Italian wool twill with a cupro lining that keeps the interior smooth against layers. The charcoal tone anchors seasonal suiting without reading heavy. Sharp lapels and a shaped shoulder line define a clean, structured silhouette that works easily over knits or fine shirting.",
+        "seo_title": "Structured Wool Blazer in Charcoal",
+        "seo_meta_description": "Charcoal wool twill blazer with cupro lining, sharp lapels, and a shaped shoulder for refined tailoring.",
+        "image_alt_text": "Charcoal wool twill blazer with sharp lapels and shaped shoulders"
+      },
+      "generation_error": null,
+      "raw_response": null
+    },
+    {
+      "id": 3,
+      "source_product": {
+        "name": "Silk Crepe Bias Dress",
+        "materials": "silk crepe de chine",
+        "color": "deep olive",
+        "price": "460.00",
+        "care_instructions": "Dry clean recommended; steam lightly from reverse"
+      },
+      "generated_copy": {
+        "description": "Cut on the bias in silk crepe de chine so the fabric falls with a quiet, liquid movement. Deep olive adds depth without overt shine. The clean lines keep the focus on drape and proportion rather than embellishment, making it easy to dress up or down.",
+        "seo_title": "Silk Crepe Bias Dress in Deep Olive",
+        "seo_meta_description": "Deep olive silk crepe de chine bias dress with fluid drape and clean, minimal lines.",
+        "image_alt_text": "Deep olive silk crepe bias dress with fluid drape"
+      },
+      "generation_error": null,
+      "raw_response": null
+    }
+  ]
+}
