@@ -3,35 +3,46 @@ import path from "node:path";
 import { z } from "zod";
 import { PATHS } from "@/lib/paths";
 
+// validation/review are tolerant: the agent loop injects the authoritative
+// artifacts from the run record, but a report should still be written even if
+// a run skipped validation or the payload arrives in a partial shape.
 const WriteReportInputSchema = z.object({
   runId: z.string(),
   task: z.string(),
   collectionUrl: z.string().optional(),
   products: z.array(z.record(z.string(), z.unknown())),
   generatedItems: z.array(z.record(z.string(), z.unknown())),
-  validation: z.object({
-    issueCount: z.number(),
-    issues: z.array(
-      z.object({
-        productId: z.string(),
-        productName: z.string(),
-        issue: z.string(),
-      }),
-    ),
-    reportMarkdown: z.string(),
-  }),
-  review: z.object({
-    summary: z.string(),
-    flaggedItems: z.array(
-      z.object({
-        productId: z.string(),
-        issueType: z.string(),
-        severity: z.string(),
-        notes: z.string(),
-        suggestedFix: z.string(),
-      }),
-    ),
-  }),
+  validation: z
+    .object({
+      issueCount: z.number().default(0),
+      issues: z
+        .array(
+          z.object({
+            productId: z.string().default(""),
+            productName: z.string().default(""),
+            issue: z.string().default(""),
+          }),
+        )
+        .default([]),
+      reportMarkdown: z.string().default("No validation report available."),
+    })
+    .default({ issueCount: 0, issues: [], reportMarkdown: "No validation report available." }),
+  review: z
+    .object({
+      summary: z.string().default("No AI review summary available."),
+      flaggedItems: z
+        .array(
+          z.object({
+            productId: z.string().default(""),
+            issueType: z.string().default(""),
+            severity: z.string().default(""),
+            notes: z.string().default(""),
+            suggestedFix: z.string().default(""),
+          }),
+        )
+        .default([]),
+    })
+    .default({ summary: "No AI review summary available.", flaggedItems: [] }),
   finalSummary: z.string().optional(),
 });
 

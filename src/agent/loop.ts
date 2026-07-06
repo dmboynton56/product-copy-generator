@@ -28,12 +28,64 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value && typeof value === "object" && !Array.isArray(value));
 }
 
+function optionalString(value: unknown): string | undefined {
+  return value == null ? undefined : String(value);
+}
+
+// validate_copy and review_copy need generated copy joined with its source
+// product. Build that join from the run record instead of trusting the model
+// to echo large structured payloads back intact.
+function buildValidationItems(run: RunRecord): Record<string, unknown>[] {
+  return run.generatedItems.map((generated) => {
+    const product =
+      run.products.find(
+        (candidate) => candidate.url === generated.productId || candidate.name === generated.productId,
+      ) ?? {};
+    const name = String(product.name ?? generated.productId ?? "Unknown");
+
+    return {
+      productId: String(generated.productId ?? product.url ?? name),
+      productName: name,
+      source: {
+        name,
+        materials: optionalString(product.materials),
+        color: optionalString(product.color),
+        price: optionalString(product.price),
+        care_instructions: optionalString(product.care_instructions ?? product.careInstructions),
+        source_description: optionalString(product.description),
+        url: optionalString(product.url),
+      },
+      generated: {
+        description: String(generated.description ?? ""),
+        seo_title: String(generated.seoTitle ?? generated.seo_title ?? ""),
+        seo_meta_description: String(generated.seoMetaDescription ?? generated.seo_meta_description ?? ""),
+        image_alt_text: String(generated.imageAltText ?? generated.image_alt_text ?? ""),
+      },
+    };
+  });
+}
+
+const ARTIFACT_BACKED_TOOLS: ToolName[] = [
+  "write_report",
+  "write_feedback_report",
+  "validate_copy",
+  "review_copy",
+];
+
 function prepareToolInput(runId: string, task: string, toolName: ToolName, input: unknown): unknown {
   if (!isRecord(input)) {
     return input;
   }
 
-  if (toolName !== "write_report" && toolName !== "write_feedback_report") {
+  if (!ARTIFACT_BACKED_TOOLS.includes(toolName)) {
+    return input;
+  }
+
+  if (toolName === "validate_copy" || toolName === "review_copy") {
+    const current = getRunSync(runId);
+    if (current && current.generatedItems.length > 0) {
+      return { ...input, items: buildValidationItems(current) };
+    }
     return input;
   }
 
@@ -50,6 +102,26 @@ function prepareToolInput(runId: string, task: string, toolName: ToolName, input
     }
     if (current?.feedbackAnalysis) {
       next.analysis = current.feedbackAnalysis;
+    }
+  }
+
+  if (toolName === "write_report") {
+    const current = getRunSync(runId);
+    if (current) {
+      // The run record holds the authoritative tool outputs; don't rely on the
+      // model echoing large structured payloads back intact.
+      if (current.products.length > 0) {
+        next.products = current.products;
+      }
+      if (current.generatedItems.length > 0) {
+        next.generatedItems = current.generatedItems;
+      }
+      if (current.validation) {
+        next.validation = current.validation;
+      }
+      if (current.review) {
+        next.review = current.review;
+      }
     }
   }
 
