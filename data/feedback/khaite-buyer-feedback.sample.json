@@ -1,0 +1,113 @@
+{
+  "datasetId": "mock-khaite-buyer-feedback-july",
+  "label": "Mock KHAITE buyer feedback sample",
+  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "caveat": "Synthetic demo data for automation workflow testing. This is not real KHAITE customer data.",
+  "products": [
+    {
+      "productId": "inara-top",
+      "productName": "Inara Top",
+      "category": "Ready-to-wear",
+      "url": "https://khaite.com/products/inara-top-black",
+      "reviews": [
+        {
+          "source": "verified_review",
+          "rating": 5,
+          "text": "The neckline and knit feel refined, and it works with tailored trousers. I wish the product page showed the back view more clearly.",
+          "tags": ["praise:design", "gap:imagery"]
+        },
+        {
+          "source": "verified_review",
+          "rating": 4,
+          "text": "Beautiful weight and color. Runs slightly short on a longer torso, so the styling photos helped but the measurement guidance did not.",
+          "tags": ["praise:material", "issue:fit", "gap:sizing"]
+        },
+        {
+          "source": "client_service",
+          "rating": 3,
+          "text": "Customer asked whether the knit would stretch with wear and whether the cropped proportion is intentional.",
+          "tags": ["issue:material", "gap:copy"]
+        }
+      ],
+      "returnReasons": [
+        { "reason": "Too cropped for expected fit", "count": 5 },
+        { "reason": "Needed clearer fabric stretch guidance", "count": 3 }
+      ],
+      "fitFeedback": [
+        "Runs short on long torsos.",
+        "True through shoulders, cropped through body.",
+        "Buyers want garment length and stretch language."
+      ]
+    },
+    {
+      "productId": "maeve-jean",
+      "productName": "Maeve Jean",
+      "category": "Denim",
+      "url": "https://khaite.com/products/maeve-jean-indigo",
+      "reviews": [
+        {
+          "source": "verified_review",
+          "rating": 5,
+          "text": "The denim feels substantial and the leg shape looks modern without being extreme. The rise was exactly what I hoped for.",
+          "tags": ["praise:quality", "praise:fit"]
+        },
+        {
+          "source": "verified_review",
+          "rating": 3,
+          "text": "Great wash, but I exchanged for a size up. The page says relaxed, but the waist felt more structured than expected.",
+          "tags": ["issue:sizing", "gap:copy"]
+        },
+        {
+          "source": "return_reason",
+          "rating": 2,
+          "text": "Returned because the inseam looked different from the photo and I could not tell how tall the model was.",
+          "tags": ["issue:fit", "gap:imagery"]
+        }
+      ],
+      "returnReasons": [
+        { "reason": "Waist ran smaller than expected", "count": 7 },
+        { "reason": "Inseam unclear from PDP", "count": 4 }
+      ],
+      "fitFeedback": [
+        "Structured waist; consider recommending size up between sizes.",
+        "Leg shape praised when fit is right.",
+        "Model height and inseam context would reduce uncertainty."
+      ]
+    },
+    {
+      "productId": "lotus-mini-bag",
+      "productName": "Lotus Mini Bag",
+      "category": "Handbags",
+      "url": "https://khaite.com/products/lotus-mini-bag-black",
+      "reviews": [
+        {
+          "source": "verified_review",
+          "rating": 5,
+          "text": "The leather is soft but still holds the sculptural shape. It looks special enough for evening but is quiet for day.",
+          "tags": ["praise:material", "praise:versatility"]
+        },
+        {
+          "source": "client_service",
+          "rating": 4,
+          "text": "Several shoppers asked whether a phone, card case, keys, and lipstick fit inside at the same time.",
+          "tags": ["gap:capacity", "gap:copy"]
+        },
+        {
+          "source": "verified_review",
+          "rating": 4,
+          "text": "Love the shape. I wanted one clear photo of the interior and strap drop before deciding.",
+          "tags": ["praise:design", "gap:imagery"]
+        }
+      ],
+      "returnReasons": [
+        { "reason": "Capacity smaller than expected", "count": 4 },
+        { "reason": "Wanted clearer interior image", "count": 2 }
+      ],
+      "fitFeedback": [
+        "Capacity questions repeat across service notes.",
+        "Interior view and strap drop would improve confidence.",
+        "Material quality is a strong purchase driver."
+      ]
+    }
+  ]
+}
