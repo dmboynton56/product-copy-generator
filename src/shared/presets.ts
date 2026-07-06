@@ -24,6 +24,7 @@ export const PRESET_TASKS: PresetTask[] = [
   },
   {
     label: "SEO risk review",
-    task: "Review source copy for SEO risks",
+    task:
+      "Pull KHAITE new arrivals, extract the first 2 products, review their source copy for SEO risks, generate improved PDP copy, validate SEO limits, and write a report.",
   },
 ];
