@@ -1,0 +1,63 @@
+{
+  "scraped_at": "2026-07-06T20:23:31.189Z",
+  "collection_url": "https://khaite.com/collections/new",
+  "limit": 2,
+  "products": [
+    {
+      "name": "Inara Top",
+      "url": "https://khaite.com/products/inara-top-in-ice-green",
+      "price": "$1,680",
+      "color": "ICE GREEN",
+      "materials": "80%LYOCELL, 20%SILK",
+      "description": "An elegant yet playful top made striking by ruched panels of lightweight voile selected for its soft and fluid sheen. Framed by a modern sweetheart neckline, the streamlined, easy-fitting silhouette is suspended from spaghetti straps and drapes to a softly scalloped hem. Zipper closure at center back.",
+      "sku": "24814232-499",
+      "size_and_fit": "True to size. Recommended to take your normal size. Model is 5'10, wearing size S.",
+      "source_evidence": {
+        "fetched_at": "2026-07-06T20:23:28.077Z",
+        "fields_found": [
+          "name",
+          "price",
+          "color",
+          "materials",
+          "description",
+          "sku",
+          "size_and_fit"
+        ]
+      },
+      "collection_card": {
+        "name": "Inara Top",
+        "url": "https://khaite.com/products/inara-top-in-ice-green",
+        "price": "$1,680",
+        "image_alt": "INARA TOP ICE GREEN 24814232 499 GHOST"
+      }
+    },
+    {
+      "name": "Auggie Short",
+      "url": "https://khaite.com/products/auggie-short-in-dark-olive",
+      "price": "$1,680",
+      "color": "DARK OLIVE",
+      "materials": "74%WOOL, 26%SILK",
+      "description": "A trouser-inspired knee-length short tailored with fluid precision in sculptural cady selected for its rich texture, beautiful drape, and silken luster. Paired reverse pleats are placed proximally and pressed flat to preserve the clean lines. With belt loops, side pockets, and back welt pockets.",
+      "sku": "3205582-429",
+      "size_and_fit": "True to size. Recommended to take your normal size. Model is 5'10, wearing size 2.",
+      "source_evidence": {
+        "fetched_at": "2026-07-06T20:23:30.131Z",
+        "fields_found": [
+          "name",
+          "price",
+          "color",
+          "materials",
+          "description",
+          "sku",
+          "size_and_fit"
+        ]
+      },
+      "collection_card": {
+        "name": "Auggie Short",
+        "url": "https://khaite.com/products/auggie-short-in-dark-olive",
+        "price": "$1,680",
+        "image_alt": "Auggie Short in Dark Olive"
+      }
+    }
+  ]
+}
